@@ -13,14 +13,14 @@ class Shorttext {
     static cut(numberCharacter, optionsShort) {
 
         // maximo de caracters
-        let maxCharacter = (numberCharacter == undefined) ? 1000 : numberCharacter;
+        let maxCharacter = (numberCharacter == undefined) ? 140 : numberCharacter;
         
         // pega as opções
         let options = Shorttext._setOptions();
 
         // caso o usuário colocou as opções
-        if (optionsShort != undefined) Object.assign(optionsShort, options);
-
+        if (optionsShort != undefined) Object.assign(options, optionsShort);
+        
         // aciona o evento de copy
         document.addEventListener('copy', e => Shorttext._callbackCut(e, maxCharacter, options));
     };
@@ -44,7 +44,7 @@ class Shorttext {
      * @param {String} text 
      */
     static _traitText(text, options) {
-        return `${text}${options.delimiter} - <a href='${options.link}' target='_blank'>${options.text}</a>`;
+        return `${text}${options.delimiter} ${options.text} - <a href='${options.link}' target='_blank'>${options.link}</a>`;
     }
 
     /**
@@ -53,8 +53,8 @@ class Shorttext {
      */
     static _setOptions() {
         return {
-            link: 'http://band.com.br',
-            text: 'Veja mais clicando aqui',
+            link: window.location.href,
+            text: 'Veja mais em',
             delimiter: '...'
         }
     };
