@@ -13,7 +13,7 @@ class Shorttext {
     static cut(numberCharacter, optionsShort) {
 
         // maximo de caracters
-        let maxCharacter = (numberCharacter == undefined) ? 100 : numberCharacter;
+        let maxCharacter = (numberCharacter == undefined) ? 1000 : numberCharacter;
         
         // pega as opções
         let options = Shorttext._setOptions();
