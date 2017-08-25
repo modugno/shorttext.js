@@ -15,20 +15,24 @@ Você pode baixar o repositório aqui [Download ZIP](https://github.com/modugno/
 ```
 
 * Inicializando o plugin e limitando caracteres
-Por padrão, ele ja ira recortar 1000 caracteres, porem, pode ser mudado passando como primeiro parametro a quantidade de caracteres que deseja recortar
+Por padrão, ele ja ira recortar 140 caracteres, porem, pode ser mudado passando como primeiro parametro a quantidade de caracteres que deseja recortar
 ```javascript
-Shorttext.cut(100);
+Shorttext.cut();
+// ou
+Shorttext.cut(140);
 ```
 
 * Opções
 Por padrão, ja temos algumas configurações.
 ```javascript
 var options = {
-    link: 'http://example.com.br',
-    text: 'Veja mais clicando aqui',
+    link: window.location.href,
+    text: 'Veja mais em',
     delimiter: '...'
 }
 
 // chama o método com os options
-Shorttext.cut(100, optoins);
+Shorttext.cut(140, options);
+// ou
+Shorttext.cut(undefined, options);
 ```
