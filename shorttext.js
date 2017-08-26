@@ -10,17 +10,27 @@ class Shorttext {
      * Método para recortar o texto
      * @param {number} numberCharacter Máximo de caracteres do texto
      */
-    static cut(numberCharacter, optionsShort) {
+    static cut(...value) {
 
         // maximo de caracters
-        let maxCharacter = (numberCharacter == undefined) ? 140 : numberCharacter;
-        
+        let maxCharacter = 140;
+       
         // pega as opções
         let options = Shorttext._setOptions();
+       
+        // verifica os tipos dos parametros e seta suas configurações
+        switch(typeof value[0]) {
+            case 'number':
+                maxCharacter = value[0];
+                 if(value[1]) Object.assign(options, value[1]);
+                break;
+            case 'object':
+                 if(value[0]) Object.assign(options, value[0]);
+                break;
+            default:
+                maxCharacter;
+        }
 
-        // caso o usuário colocou as opções
-        if (optionsShort != undefined) Object.assign(options, optionsShort);
-        
         // aciona o evento de copy
         document.addEventListener('copy', e => Shorttext._callbackCut(e, maxCharacter, options));
     };
@@ -34,7 +44,6 @@ class Shorttext {
 
         // texto selecionado
         let textSelected = window.getSelection().toString();
-
         // faz o processo de copiar o texto minificado
         event.clipboardData.setData('text/plain', Shorttext._traitText( textSelected.substring(0, maxCharacter), options));
     };
@@ -44,7 +53,7 @@ class Shorttext {
      * @param {String} text 
      */
     static _traitText(text, options) {
-        return `${text}${options.delimiter} ${options.text} - <a href='${options.link}' target='_blank'>${options.link}</a>`;
+        return `${text}${options.delimiter} ${options.text} - <a href='${options.link}' target='${options.target}' class='${options.class}'>${options.link}</a>`;
     }
 
     /**
@@ -55,7 +64,9 @@ class Shorttext {
         return {
             link: window.location.href,
             text: 'Veja mais em',
-            delimiter: '...'
+            delimiter: '...',
+            target: '_blank',
+            class: 'shorttext'
         }
     };
 
