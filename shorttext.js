@@ -1,14 +1,14 @@
 /**
- * 
  * Shorttext.js
  * @author Guilherme Modugno - https://modugno.github.io 
- * 
+ * @author Paulo Tosi - http://paulotosi.com.br/
+ * @description Limite o tanto de caracteres que podem recortar em seu site
  */
 class Shorttext {
  
     /**
      * Método para recortar o texto
-     * @param {number} numberCharacter Máximo de caracteres do texto
+     * @param {Array} value Quantidade de Caracteres / opções
      */
     static cut(...value) {
 
