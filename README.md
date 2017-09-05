@@ -7,7 +7,7 @@
 Você pode clonar o projeto
 
 ```cmd
-git clone https://github.com/tosipaulo/shorttext.js.git
+git clone https://github.com/modugno/shorttext.js.git
 ```
 Ou pode baixar o repositório aqui [Download ZIP](https://github.com/modugno/shorttext.js/archive/master.zip)
 
